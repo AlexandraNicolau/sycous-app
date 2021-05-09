@@ -3,7 +3,6 @@ html {
 }
 .app {
   min-height: 100vh;
-
   font-size: calc(10px + 2vmin);
   color: white;
   display: grid;
@@ -28,7 +27,6 @@ footer {
 }
 
 header,
-main,
 footer {
   display: flex;
   flex-direction: column;
@@ -36,7 +34,12 @@ footer {
   justify-content: center;
 }
 
+ul {
+  padding: 30px;
+  margin: 0;
+}
 .consumer {
   padding: 5px;
   display: flex;
+  justify-content: space-between;
 }

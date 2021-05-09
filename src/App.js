@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   const consumersList = data.map((consumer) => {
-    return <li className="consumer"key={consumer.consumerId}>
+    return <li className="consumer" key={consumer.consumerId}>
      <div> {consumer.name}</div>
       <div>{consumer.email}</div>
       <div>{consumer.phoneNumber}</div>
@@ -42,6 +42,12 @@ function App() {
       <header>Header</header>
       <main>
         <ul>
+          <li className="consumer">
+            <div>Name</div>
+            <div>Email</div>
+            <div>Phone Number</div>
+            <div>Occupation Date</div>
+          </li>
           {consumersList}
         </ul>
       </main>
