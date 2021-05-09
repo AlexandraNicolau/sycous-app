@@ -11,6 +11,7 @@ const getConsumers = (data) => {
 
 function App() {
   const [data, setData] = useState([]);
+  const [mustHaveMobile, setMustHaveMobile] = useState(false)
 
   useEffect(async () => {
     const result = await axios(
@@ -28,19 +29,35 @@ function App() {
 
   }, []);
 
-  const consumersList = data.map((consumer) => {
-    return <li className="consumer" key={consumer.consumerId}>
-     <div> {consumer.name}</div>
+  const renderConsumer = (consumer) => (
+    <li className="consumer" key={consumer.consumerId}>
+      <div>{consumer.name}</div>
       <div>{consumer.email}</div>
       <div>{consumer.phoneNumber}</div>
       <div>{consumer.occupationDate}</div>
     </li>
+  )
+
+  const consumersList = data.map((consumer) => {
+    if (mustHaveMobile === "true") {
+      if (consumer.isPhoneMobile) {
+        return renderConsumer(consumer)
+      }
+    } else {
+      return renderConsumer(consumer)
+    }
   });
 
   return (
     <div className="app">
       <header>Header</header>
       <main>
+        <div className="filters">
+          <select onChange={(event) => setMustHaveMobile(event.target.value)}>
+            <option value="false" selected>All</option>
+            <option value="true">With mobile number only</option>
+          </select>
+        </div>
         <ul>
           <li className="consumer">
             <div>Name</div>
